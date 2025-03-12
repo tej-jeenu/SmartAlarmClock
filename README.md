@@ -1,32 +1,36 @@
 Smart Alarm Clock
 This repository contains two Python scripts that together create a customizable “smart” alarm clock system. The system consists of:
 
-alarmclocksettings.py – A graphical user interface (GUI) for configuring alarms, tasks, triggers, and storing these settings in a local SQLite database.
-smartalarmclocksoftware.py – A background service/script that interacts with an Arduino (via serial communication), controls Kasa smart devices, checks for scheduled tasks/alarms, and executes them accordingly.
+1. alarmclocksettings.py – A graphical user interface (GUI) for configuring alarms, tasks, triggers, and storing these settings in a local SQLite database.
+2. smartalarmclocksoftware.py – A background service/script that interacts with an Arduino (via serial communication), controls Kasa smart devices, checks for scheduled tasks/alarms, and executes them accordingly.
+
 Features
-Alarm Time: Set a specific time to trigger the main alarm.
-Task Scheduling: Create tasks with triggers that occur on a specific date and time.
-Supports opening websites, launching applications, and initiating WhatsApp-based “call reminders.”
-Environmental Triggers (Temperature & Humidity):
-Connects to Kasa SmartPlugs to automate devices (e.g., fans or humidifiers) based on thresholds you set for temperature and humidity.
-SQLite Database: All tasks, alarm times, and device triggers are stored locally (alarminfo.db).
-Tkinter GUI: Friendly interface for easily adding, removing, and viewing tasks.
-Serial Communication with Arduino: Constantly sends real-time data and instructions to the Arduino and receives sensor data (temperature/humidity) back.
+1. Alarm Time: Set a specific time to trigger the main alarm.
+2. Task Scheduling: Create tasks with triggers that occur on a specific date and time.
+3. Supports opening websites, launching applications, and initiating WhatsApp-based “call reminders.”
+4. Environmental Triggers (Temperature & Humidity):
+  - Connects to Kasa SmartPlugs to automate devices (e.g., fans or humidifiers) based on thresholds you set for temperature and humidity.
+5. SQLite Database: All tasks, alarm times, and device triggers are stored locally (alarminfo.db).
+6. Tkinter GUI: Friendly interface for easily adding, removing, and viewing tasks.
+7. Serial Communication with Arduino: Constantly sends real-time data and instructions to the Arduino and receives sensor data (temperature/humidity) back.
+
 Repository Contents
-alarmclocksettings.py
+
+- alarmclocksettings.py
 
 Written in Python with tkinter for the GUI.
 Allows you to set alarms, add or remove tasks, choose trigger types, and configure environmental threshold values.
 Inserts and retrieves data from the SQLite database (alarminfo.db).
 Discovers local Kasa devices (SmartPlugs, etc.) and shows them in the interface.
-smartalarmclocksoftware.py
 
+- smartalarmclocksoftware.py
 A Python script running continuously to handle:
 Reading from the Arduino over serial (temperature & humidity data).
 Turning Kasa SmartPlugs on or off based on temperature/humidity thresholds.
 Checking the current time against scheduled tasks.
 Opening websites, launching apps, or sending WhatsApp messages when tasks are due.
 Uses threads to handle real-time sending of data (e.g., current time) and reading sensor data from the Arduino simultaneously.
+
 Requirements
 Python 3.7+
 Pip (Python package manager)
@@ -43,20 +47,6 @@ python-kasa (for Kasa smart device control)
 pyserial (for serial communication)
 Arduino with attached sensors for temperature/humidity (optional but required if you want to read real data).
 Kasa SmartPlugs or other Kasa devices (optional but required if you want to control power devices).
-Installing Dependencies
-If you have a requirements file, you can install everything with:
-
-nginx
-Copy
-Edit
-pip install -r requirements.txt
-Otherwise, install needed packages individually, for example:
-
-nginx
-Copy
-Edit
-pip install tkcalendar python-kasa pywhatkit pyautogui keyboard pyserial numpy
-Make sure any hardware components (Arduino, sensors, Kasa devices) are set up and accessible on the same network (for Kasa) and correct COM port (for Arduino).
 
 Usage
 Set Up the Database
